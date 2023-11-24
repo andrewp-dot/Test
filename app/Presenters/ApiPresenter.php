@@ -7,28 +7,35 @@ namespace App\Presenters;
 use Nette\Http\Request;
 use Nette\Application\UI\Presenter;
 
-/* header for accept http request */
 
-header("Access-Control-Allow-Origin: *");
-header("Access-Control-Allow-Methods: PUT, GET, POST");
-header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
 class ApiPresenter extends Presenter
 {
 
+
     public function actionDefault()
     {
-        $this->getHttpRequest();
-        // Handle GET request for a specific article
-        // Fetch data from the database or other source based on $id
-        $articleData = array("default" => "function");
+        $this->getHttpResponse()->addHeader('Access-Control-Allow-Origin', ' * ');
 
-        // Return data in JSON format
-        $this->sendJson($articleData);
-        $this->terminate();
+        $request = $this->getHttpRequest();
+        $postData = json_decode($request->getRawBody(), true);
+
+        if ($postData != null) {
+            if ($postData['login'] == 'test' && $postData['pwd'] == 'pwd') {
+                $this->sendJson(['status' => 'ok']);
+            } else {
+                $this->sendJson(["error" => "unathorized"]);
+            }
+            // Fetch data from the database or other source based on $id
+            // Return data in JSON format
+
+        } else {
+            $this->sendJson(["error" => "400"]);
+        }
     }
 
     public function actionArticle($id)
     {
+        $this->getHttpResponse()->addHeader('Access-Control-Allow-Origin', ' * ');
         // Handle GET request for a specific article
         // Fetch data from the database or other source based on $id
         $articleData = array("hello" => "wrold");
