@@ -1,9 +1,9 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import cls from './navBar.module.css';
+import cls from './styles/navBar.module.css';
 
 const NavBar = (props) => {
-	const routes = props.routes;
+	const routes = props.routes || [];
 
 	const activeLinkHandler = ({ isActive }) => {
 		return isActive ? cls['active'] : '';
