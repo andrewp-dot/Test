@@ -1,3 +1,4 @@
-config/local.neon
+.vscode
 vendor/*
-
+config/local.neon
+iot-manager-view/node_modules
