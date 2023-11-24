@@ -4,13 +4,20 @@ declare(strict_types=1);
 
 namespace App\Presenters;
 
+use Nette\Http\Request;
 use Nette\Application\UI\Presenter;
 
+/* header for accept http request */
+
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Methods: PUT, GET, POST");
+header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
 class ApiPresenter extends Presenter
 {
 
     public function actionDefault()
     {
+        $this->getHttpRequest();
         // Handle GET request for a specific article
         // Fetch data from the database or other source based on $id
         $articleData = array("default" => "function");

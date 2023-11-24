@@ -9,21 +9,21 @@ const routes = [
 ];
 
 const Home = () => {
-	// const fetchDataFromApi = async () => {
-	// 	try {
-	// 		const response = await fetch(
-	// 			'http://localhost/iot-manager/www/api/article'
-	// 		);
-	// 		const data = await response.json();
-	// 		console.log(data);
-	// 	} catch (e) {
-	// 		console.log(e);
-	// 	}
-	// };
+	const fetchDataFromApi = async () => {
+		try {
+			const response = await fetch('http://localhost/iot-manager/www/api/', {
+				method: 'POST',
+			});
+			const data = await response.json();
+			console.log(data);
+		} catch (e) {
+			console.log(e);
+		}
+	};
 
-	// useEffect(() => {
-	// 	fetchDataFromApi();
-	// }, []);
+	useEffect(() => {
+		fetchDataFromApi();
+	}, []);
 
 	return (
 		<>
