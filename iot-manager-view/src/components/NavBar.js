@@ -12,9 +12,9 @@ const NavBar = (props) => {
 	return (
 		<header>
 			<nav>
-				{routes.map((route) => {
+				{routes.map((route, key) => {
 					return (
-						<NavLink className={activeLinkHandler} to={route.path}>
+						<NavLink key={key} className={activeLinkHandler} to={route.path}>
 							{route.name}
 						</NavLink>
 					);
