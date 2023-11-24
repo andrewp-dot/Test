@@ -1,6 +1,8 @@
 :root {
   --text-color-primary: #000;
   --text-color-secondary: #fff;
+  --color-primary: #0b0bff;
+  --color-secondary: #fff
 }
 
 body {
